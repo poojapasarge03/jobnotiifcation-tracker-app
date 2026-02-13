@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KodNest Premium Build System - Components Example</title>
+    <link rel="stylesheet" href="../design-system/index.css">
+</head>
+<body>
+    <div style="max-width: 1200px; margin: 0 auto; padding: var(--space-8) var(--space-5);">
+        <h1 style="margin-bottom: var(--space-8);">Component Showcase</h1>
+
+        <!-- Buttons -->
+        <section style="margin-bottom: var(--space-8);">
+            <h2 style="margin-bottom: var(--space-5);">Buttons</h2>
+            <div style="display: flex; gap: var(--space-3); flex-wrap: wrap;">
+                <button class="btn btn-primary">Primary Button</button>
+                <button class="btn btn-secondary">Secondary Button</button>
+                <button class="btn btn-primary" disabled>Disabled</button>
+            </div>
+        </section>
+
+        <!-- Inputs -->
+        <section style="margin-bottom: var(--space-8);">
+            <h2 style="margin-bottom: var(--space-5);">Inputs</h2>
+            <div style="max-width: 500px;">
+                <label style="display: block; margin-bottom: var(--space-2); font-weight: var(--font-weight-medium);">
+                    Text Input
+                </label>
+                <input type="text" class="input" placeholder="Enter text">
+                
+                <label style="display: block; margin-top: var(--space-3); margin-bottom: var(--space-2); font-weight: var(--font-weight-medium);">
+                    Textarea
+                </label>
+                <textarea class="input" placeholder="Enter multiple lines"></textarea>
+            </div>
+        </section>
+
+        <!-- Cards -->
+        <section style="margin-bottom: var(--space-8);">
+            <h2 style="margin-bottom: var(--space-5);">Cards</h2>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: var(--space-3);">
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title">Card Title</h3>
+                    </div>
+                    <div class="card-body">
+                        <p>This is a card component with subtle borders and balanced padding. No drop shadows, clean and calm.</p>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title">Another Card</h3>
+                    </div>
+                    <div class="card-body">
+                        <p>Cards maintain consistent styling across the system. They feel intentional and coherent.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Badges -->
+        <section style="margin-bottom: var(--space-8);">
+            <h2 style="margin-bottom: var(--space-5);">Badges</h2>
+            <div style="display: flex; gap: var(--space-2); flex-wrap: wrap;">
+                <span class="badge badge-neutral">Neutral</span>
+                <span class="badge badge-success">Success</span>
+                <span class="badge badge-warning">Warning</span>
+                <span class="badge badge-accent">Accent</span>
+            </div>
+        </section>
+
+        <!-- Copyable Box -->
+        <section style="margin-bottom: var(--space-8);">
+            <h2 style="margin-bottom: var(--space-5);">Copyable Box</h2>
+            <div class="copyable-box">
+                <div class="copyable-box-header">
+                    <span class="copyable-box-label">Prompt</span>
+                </div>
+                <div>Create a function that takes an array of numbers and returns the sum.</div>
+            </div>
+        </section>
+
+        <!-- Checkboxes -->
+        <section style="margin-bottom: var(--space-8);">
+            <h2 style="margin-bottom: var(--space-5);">Checkboxes</h2>
+            <div style="display: flex; flex-direction: column; gap: var(--space-3);">
+                <div class="checkbox-group">
+                    <input type="checkbox" id="check1" class="checkbox">
+                    <label for="check1" class="checkbox-label">Unchecked option</label>
+                </div>
+                <div class="checkbox-group">
+                    <input type="checkbox" id="check2" class="checkbox" checked>
+                    <label for="check2" class="checkbox-label">Checked option</label>
+                </div>
+                <div class="checkbox-group">
+                    <input type="checkbox" id="check3" class="checkbox" disabled>
+                    <label for="check3" class="checkbox-label">Disabled option</label>
+                </div>
+            </div>
+        </section>
+
+        <!-- Empty State -->
+        <section style="margin-bottom: var(--space-8);">
+            <h2 style="margin-bottom: var(--space-5);">Empty State</h2>
+            <div class="empty-state">
+                <h3 class="empty-state-title">No items yet</h3>
+                <p>Get started by creating your first item.</p>
+                <div class="empty-state-action">
+                    <button class="btn btn-primary">Create Item</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Error State -->
+        <section style="margin-bottom: var(--space-8);">
+            <h2 style="margin-bottom: var(--space-5);">Error State</h2>
+            <div class="error-state">
+                <h3 class="error-state-title">Something went wrong</h3>
+                <p class="error-state-message">
+                    The component failed to build. This usually happens when there's a syntax error in your code.
+                    Check your component definition and try again.
+                </p>
+                <div class="error-state-action">
+                    <button class="btn btn-primary">Try Again</button>
+                </div>
+            </div>
+        </section>
+    </div>
+</body>
+</html>

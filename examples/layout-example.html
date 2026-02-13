@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KodNest Premium Build System - Layout Example</title>
+    <link rel="stylesheet" href="../design-system/index.css">
+</head>
+<body>
+    <!-- Top Bar -->
+    <div class="top-bar">
+        <div class="top-bar-left">Project Alpha</div>
+        <div class="top-bar-center">
+            <div class="progress-indicator">Step 2 / 5</div>
+        </div>
+        <div class="top-bar-right">
+            <span class="badge badge-accent">In Progress</span>
+        </div>
+    </div>
+
+    <!-- Context Header -->
+    <div class="context-header">
+        <h1>Build Your Component</h1>
+        <p class="context-header-subtext">Create a reusable component that follows our design system principles.</p>
+    </div>
+
+    <!-- Main Layout -->
+    <div class="main-layout">
+        <!-- Primary Workspace (70%) -->
+        <div class="primary-workspace">
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="card-title">Component Builder</h3>
+                </div>
+                <div class="card-body">
+                    <p>This is where the main product interaction happens. Clean cards, predictable components, no crowding.</p>
+                    
+                    <div style="margin-top: var(--space-5);">
+                        <label style="display: block; margin-bottom: var(--space-2); font-weight: var(--font-weight-medium);">
+                            Component Name
+                        </label>
+                        <input type="text" class="input" placeholder="Enter component name">
+                    </div>
+
+                    <div style="margin-top: var(--space-3);">
+                        <label style="display: block; margin-bottom: var(--space-2); font-weight: var(--font-weight-medium);">
+                            Description
+                        </label>
+                        <textarea class="input" placeholder="Describe your component"></textarea>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Secondary Panel (30%) -->
+        <div class="secondary-panel">
+            <div class="panel-section">
+                <h4 class="panel-section-title">Step Explanation</h4>
+                <p class="panel-section-content">
+                    Define your component's purpose and structure. Keep it simple and focused on a single responsibility.
+                </p>
+            </div>
+
+            <div class="panel-section">
+                <div class="copyable-box-header">
+                    <span class="copyable-box-label">Copyable Prompt</span>
+                </div>
+                <div class="copyable-box">
+Create a React component called Button that accepts:
+- label: string
+- onClick: function
+- variant: 'primary' | 'secondary'
+                </div>
+                <div class="panel-actions" style="margin-top: var(--space-3);">
+                    <button class="btn btn-primary">Copy</button>
+                </div>
+            </div>
+
+            <div class="panel-section">
+                <div class="panel-actions">
+                    <button class="btn btn-primary">Build in Lovable</button>
+                    <button class="btn btn-secondary">It Worked</button>
+                    <button class="btn btn-secondary">Error</button>
+                    <button class="btn btn-secondary">Add Screenshot</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Proof Footer -->
+    <div class="proof-footer">
+        <h3 class="proof-footer-title">Proof Checklist</h3>
+        <div class="proof-checklist">
+            <div class="proof-item">
+                <input type="checkbox" id="proof-ui" class="proof-checkbox checkbox">
+                <label for="proof-ui" class="proof-label checkbox-label">
+                    UI Built
+                    <input type="text" class="input proof-input" placeholder="Add proof (e.g., screenshot URL)">
+                </label>
+            </div>
+            <div class="proof-item">
+                <input type="checkbox" id="proof-logic" class="proof-checkbox checkbox">
+                <label for="proof-logic" class="proof-label checkbox-label">
+                    Logic Working
+                    <input type="text" class="input proof-input" placeholder="Add proof (e.g., test results)">
+                </label>
+            </div>
+            <div class="proof-item">
+                <input type="checkbox" id="proof-test" class="proof-checkbox checkbox">
+                <label for="proof-test" class="proof-label checkbox-label">
+                    Test Passed
+                    <input type="text" class="input proof-input" placeholder="Add proof (e.g., test report)">
+                </label>
+            </div>
+            <div class="proof-item">
+                <input type="checkbox" id="proof-deployed" class="proof-checkbox checkbox">
+                <label for="proof-deployed" class="proof-label checkbox-label">
+                    Deployed
+                    <input type="text" class="input proof-input" placeholder="Add proof (e.g., deployment URL)">
+                </label>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

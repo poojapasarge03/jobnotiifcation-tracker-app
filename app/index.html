@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Job Notification Tracker - KodNest Premium</title>
+    <link rel="stylesheet" href="../design-system/index.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Job Detail Modal -->
+    <div class="modal" id="jobModal">
+        <div class="modal-overlay" id="modalOverlay"></div>
+        <div class="modal-content">
+            <button class="modal-close" id="modalClose">&times;</button>
+            <div id="modalBody"></div>
+        </div>
+    </div>
+    <!-- Top Navigation Bar -->
+    <nav class="main-nav" id="mainNav">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <a href="#/" class="nav-logo">Job Notification Tracker</a>
+            </div>
+            
+            <!-- Hamburger Menu Button (Mobile) -->
+            <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            
+            <!-- Navigation Links -->
+            <ul class="nav-menu" id="navMenu">
+                <li class="nav-item">
+                    <a href="#/dashboard" class="nav-link" data-route="dashboard">Dashboard</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#/saved" class="nav-link" data-route="saved">Saved</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#/digest" class="nav-link" data-route="digest">Digest</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#/settings" class="nav-link" data-route="settings">Settings</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#/proof" class="nav-link" data-route="proof">Proof</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Main Content Area -->
+    <main class="app-main" id="appMain">
+        <!-- Content will be rendered here by router -->
+    </main>
+
+    <script src="data.js"></script>
+    <script src="router.js"></script>
+</body>
+</html>
