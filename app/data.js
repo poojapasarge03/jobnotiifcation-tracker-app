@@ -15,7 +15,7 @@ const jobData = [
     source: "LinkedIn",
     postedDaysAgo: 2,
     salaryRange: "₹15k–₹40k/month Internship",
-    applyUrl: "https://amazon.jobs/en/jobs/123456",
+    applyUrl: "https://www.naukri.com/sde-intern-jobs",
     description: "Join Amazon's internship program to work on real-world projects. You'll collaborate with experienced engineers on scalable systems. Gain hands-on experience with AWS services and distributed systems. Perfect opportunity for students passionate about software engineering."
   },
   {
@@ -26,10 +26,10 @@ const jobData = [
     mode: "Onsite",
     experience: "Fresher",
     skills: ["Java", "SQL", "Spring Boot", "REST APIs"],
-    source: "Naukri",
+    source: "Unstop",
     postedDaysAgo: 5,
     salaryRange: "3–5 LPA",
-    applyUrl: "https://careers.infosys.com/job/123456",
+    applyUrl: "https://www.naukri.com/graduate-engineer-trainee-jobs",
     description: "Infosys is hiring fresh graduates for our Graduate Engineer Trainee program. You'll undergo comprehensive training in enterprise software development. Work on client projects using cutting-edge technologies. Build a strong foundation for your IT career."
   },
   {
@@ -43,7 +43,7 @@ const jobData = [
     source: "LinkedIn",
     postedDaysAgo: 1,
     salaryRange: "6–10 LPA",
-    applyUrl: "https://razorpay.com/careers/junior-backend-dev",
+    applyUrl: "https://www.naukri.com/backend-developer-jobs",
     description: "Razorpay is looking for a Junior Backend Developer to join our payments team. You'll build APIs that process millions of transactions daily. Work with microservices architecture and cloud infrastructure. Great learning opportunity in fintech."
   },
   {
@@ -54,10 +54,10 @@ const jobData = [
     mode: "Hybrid",
     experience: "Fresher",
     skills: ["React", "JavaScript", "CSS", "HTML"],
-    source: "Indeed",
+    source: "Internshala",
     postedDaysAgo: 3,
     salaryRange: "₹20k–₹35k/month Internship",
-    applyUrl: "https://careers.swiggy.com/internships/frontend",
+    applyUrl: "https://www.naukri.com/frontend-intern-jobs",
     description: "Swiggy's frontend team is offering internships to build user-facing features. You'll work on React components and improve user experience. Learn from senior developers in a fast-paced startup environment. Perfect for students interested in frontend development."
   },
   {
@@ -68,10 +68,10 @@ const jobData = [
     mode: "Onsite",
     experience: "0-1",
     skills: ["Java", "Spring", "Hibernate", "MySQL"],
-    source: "Naukri",
+    source: "Instahyre",
     postedDaysAgo: 7,
     salaryRange: "4–6 LPA",
-    applyUrl: "https://careers.tcs.com/job/java-developer",
+    applyUrl: "https://www.naukri.com/java-developer-jobs",
     description: "TCS is hiring Java developers with 0-1 years of experience. You'll work on enterprise applications for global clients. Learn best practices in software development. Join a team of experienced professionals in a stable work environment."
   },
   {
@@ -85,7 +85,7 @@ const jobData = [
     source: "LinkedIn",
     postedDaysAgo: 4,
     salaryRange: "5–7 LPA",
-    applyUrl: "https://careers.zoho.com/python-developer",
+    applyUrl: "https://www.naukri.com/python-developer-jobs",
     description: "Zoho is looking for fresh Python developers to join our product development team. You'll build scalable web applications using Django. Work on products used by millions of users worldwide. Great culture and learning opportunities."
   },
   {
@@ -99,7 +99,7 @@ const jobData = [
     source: "LinkedIn",
     postedDaysAgo: 0,
     salaryRange: "10–18 LPA",
-    applyUrl: "https://phonepe.com/careers/react-developer",
+    applyUrl: "https://www.naukri.com/react-developer-jobs",
     description: "PhonePe is hiring React developers with 1-3 years of experience. Build user interfaces for our payment app used by millions. Work with modern React patterns and TypeScript. Join India's leading fintech company."
   },
   {
@@ -110,10 +110,10 @@ const jobData = [
     mode: "Onsite",
     experience: "Fresher",
     skills: ["Manual Testing", "Selenium", "Java", "TestNG"],
-    source: "Naukri",
+    source: "Cutshort",
     postedDaysAgo: 6,
     salaryRange: "₹18k–₹30k/month Internship",
-    applyUrl: "https://careers.wipro.com/qa-intern",
+    applyUrl: "https://www.naukri.com/qa-intern-jobs",
     description: "Wipro's QA team is offering internships to learn software testing. You'll work on test case design and automation. Gain experience with testing tools and frameworks. Perfect for students interested in quality assurance."
   },
   {
@@ -127,7 +127,7 @@ const jobData = [
     source: "LinkedIn",
     postedDaysAgo: 2,
     salaryRange: "₹25k–₹40k/month Internship",
-    applyUrl: "https://flipkartcareers.com/data-analyst-intern",
+    applyUrl: "https://www.naukri.com/data-analyst-intern-jobs",
     description: "Flipkart is looking for Data Analyst interns to work on business intelligence. Analyze customer behavior and sales data. Create reports and dashboards for stakeholders. Great opportunity to learn data analytics in e-commerce."
   },
   {
@@ -141,7 +141,7 @@ const jobData = [
     source: "LinkedIn",
     postedDaysAgo: 1,
     salaryRange: "12–20 LPA",
-    applyUrl: "https://cred.club/careers/fullstack-dev",
+    applyUrl: "https://www.naukri.com/full-stack-developer-jobs",
     description: "CRED is hiring Full Stack Developers to build features for our credit card rewards platform. Work on both frontend and backend systems. Use modern technologies in a fast-growing startup. Great compensation and equity."
   },
   {
@@ -152,10 +152,10 @@ const jobData = [
     mode: "Hybrid",
     experience: "1-3",
     skills: ["Java", "Spring Boot", "Microservices", "Kafka"],
-    source: "Naukri",
+    source: "Wellfound",
     postedDaysAgo: 3,
     salaryRange: "8–15 LPA",
-    applyUrl: "https://paytm.com/careers/backend-dev",
+    applyUrl: "https://www.naukri.com/backend-developer-jobs",
     description: "Paytm is looking for Backend Developers to work on payment processing systems. Build scalable APIs handling millions of transactions. Work with microservices and event-driven architecture. Join India's leading payment platform."
   },
   {
@@ -166,10 +166,10 @@ const jobData = [
     mode: "Onsite",
     experience: "1-3",
     skills: ["AWS", "Docker", "Kubernetes", "CI/CD"],
-    source: "Indeed",
+    source: "AngelList",
     postedDaysAgo: 5,
     salaryRange: "7–12 LPA",
-    applyUrl: "https://accenture.com/careers/devops-engineer",
+    applyUrl: "https://www.naukri.com/devops-engineer-jobs",
     description: "Accenture is hiring DevOps Engineers to manage cloud infrastructure. Work with AWS, Docker, and Kubernetes. Set up CI/CD pipelines for client projects. Great opportunity to learn cloud technologies."
   },
   {
@@ -183,7 +183,7 @@ const jobData = [
     source: "LinkedIn",
     postedDaysAgo: 2,
     salaryRange: "6–10 LPA",
-    applyUrl: "https://juspay.in/careers/mobile-dev",
+    applyUrl: "https://www.naukri.com/mobile-developer-jobs",
     description: "Juspay is looking for Mobile App Developers to build payment SDKs. Work with React Native to create cross-platform apps. Build features used by millions of users. Join a fintech company focused on payments."
   },
   {
@@ -197,7 +197,7 @@ const jobData = [
     source: "LinkedIn",
     postedDaysAgo: 4,
     salaryRange: "5–8 LPA",
-    applyUrl: "https://freshworks.com/careers/ui-ux-designer",
+    applyUrl: "https://www.naukri.com/ui-ux-designer-jobs",
     description: "Freshworks is hiring UI/UX Designers to design SaaS products. Create user interfaces for business software. Work with product managers and developers. Build designs that millions of users interact with daily."
   },
   {
@@ -211,7 +211,7 @@ const jobData = [
     source: "Naukri",
     postedDaysAgo: 8,
     salaryRange: "8–14 LPA",
-    applyUrl: "https://capgemini.com/careers/cloud-engineer",
+    applyUrl: "https://www.naukri.com/cloud-engineer-jobs",
     description: "Capgemini is looking for Cloud Engineers to manage cloud infrastructure. Work with Azure and AWS platforms. Automate deployments using Terraform. Join a global IT consulting company."
   },
   {
@@ -225,7 +225,7 @@ const jobData = [
     source: "LinkedIn",
     postedDaysAgo: 1,
     salaryRange: "₹30k–₹50k/month Internship",
-    applyUrl: "https://ibm.com/careers/ml-intern",
+    applyUrl: "https://www.naukri.com/machine-learning-intern-jobs",
     description: "IBM is offering Machine Learning internships to work on AI projects. Build and train ML models. Work with large datasets and cloud infrastructure. Great opportunity to learn AI/ML from industry experts."
   },
   {
@@ -239,7 +239,7 @@ const jobData = [
     source: "Naukri",
     postedDaysAgo: 6,
     salaryRange: "10–16 LPA",
-    applyUrl: "https://oracle.com/careers/software-engineer",
+    applyUrl: "https://www.naukri.com/software-engineer-jobs",
     description: "Oracle is hiring Software Engineers to work on database products. Build enterprise software used by Fortune 500 companies. Work with Oracle database and Java technologies. Join a leading enterprise software company."
   },
   {
@@ -253,7 +253,7 @@ const jobData = [
     source: "LinkedIn",
     postedDaysAgo: 3,
     salaryRange: "6–10 LPA",
-    applyUrl: "https://sap.com/careers/frontend-dev",
+    applyUrl: "https://www.naukri.com/frontend-developer-jobs",
     description: "SAP is looking for Frontend Developers to build enterprise software interfaces. Work with Angular and TypeScript. Create user interfaces for business applications. Join a global enterprise software company."
   },
   {
@@ -267,7 +267,7 @@ const jobData = [
     source: "Naukri",
     postedDaysAgo: 7,
     salaryRange: "₹20k–₹35k/month Internship",
-    applyUrl: "https://cognizant.com/careers/backend-intern",
+    applyUrl: "https://www.naukri.com/backend-intern-jobs",
     description: "Cognizant is offering Backend Development internships. Learn enterprise software development. Work on REST APIs and microservices. Gain experience in a global IT services company."
   },
   {
@@ -281,7 +281,7 @@ const jobData = [
     source: "LinkedIn",
     postedDaysAgo: 4,
     salaryRange: "₹25k–₹40k/month Internship",
-    applyUrl: "https://dell.com/careers/fullstack-intern",
+    applyUrl: "https://www.naukri.com/full-stack-intern-jobs",
     description: "Dell is looking for Full Stack interns to work on internal tools. Build web applications using React and Node.js. Learn full-stack development in a corporate environment. Great learning opportunity."
   },
   {
@@ -295,7 +295,7 @@ const jobData = [
     source: "LinkedIn",
     postedDaysAgo: 0,
     salaryRange: "₹35k–₹55k/month Internship",
-    applyUrl: "https://microsoft.com/careers/sde-intern",
+    applyUrl: "https://www.naukri.com/sde-intern-jobs",
     description: "Microsoft is offering SDE internships to work on cloud products. Build features for Azure platform. Work with C# and .NET technologies. Learn from world-class engineers at Microsoft."
   },
   {
@@ -309,7 +309,7 @@ const jobData = [
     source: "LinkedIn",
     postedDaysAgo: 2,
     salaryRange: "12–18 LPA",
-    applyUrl: "https://thoughtworks.com/careers/python-dev",
+    applyUrl: "https://www.naukri.com/python-developer-jobs",
     description: "ThoughtWorks is hiring Python Developers to work on client projects. Build scalable web applications using Django. Work in agile teams with global clients. Great culture and learning opportunities."
   },
   {
@@ -323,7 +323,7 @@ const jobData = [
     source: "LinkedIn",
     postedDaysAgo: 1,
     salaryRange: "15–25 LPA",
-    applyUrl: "https://uber.com/careers/react-native-dev",
+    applyUrl: "https://www.naukri.com/react-native-developer-jobs",
     description: "Uber is looking for React Native Developers to build mobile apps. Work on features used by millions of riders and drivers. Use modern React Native patterns. Join a global tech company."
   },
   {
@@ -337,7 +337,7 @@ const jobData = [
     source: "Naukri",
     postedDaysAgo: 5,
     salaryRange: "7–12 LPA",
-    applyUrl: "https://ola.com/careers/backend-dev",
+    applyUrl: "https://www.naukri.com/backend-developer-jobs",
     description: "Ola is hiring Backend Developers to work on ride-sharing platform. Build APIs handling millions of requests. Work with microservices and event-driven architecture. Join India's leading mobility platform."
   },
   {
@@ -351,7 +351,7 @@ const jobData = [
     source: "LinkedIn",
     postedDaysAgo: 3,
     salaryRange: "10–16 LPA",
-    applyUrl: "https://myntra.com/careers/frontend-dev",
+    applyUrl: "https://www.naukri.com/frontend-developer-jobs",
     description: "Myntra is looking for Frontend Developers to build e-commerce interfaces. Work on React and Next.js applications. Create user experiences for fashion shopping. Join India's leading fashion e-commerce platform."
   },
   {
@@ -365,7 +365,7 @@ const jobData = [
     source: "LinkedIn",
     postedDaysAgo: 4,
     salaryRange: "12–20 LPA",
-    applyUrl: "https://zomato.com/careers/data-engineer",
+    applyUrl: "https://www.naukri.com/data-engineer-jobs",
     description: "Zomato is hiring Data Engineers to build data pipelines. Process millions of food orders daily. Work with big data technologies like Spark and Kafka. Join India's leading food delivery platform."
   },
   {
@@ -379,7 +379,7 @@ const jobData = [
     source: "Naukri",
     postedDaysAgo: 6,
     salaryRange: "5–8 LPA",
-    applyUrl: "https://makemytrip.com/careers/qa-engineer",
+    applyUrl: "https://www.naukri.com/qa-engineer-jobs",
     description: "MakeMyTrip is looking for QA Engineers to test travel booking platform. Write automated test cases using Selenium. Ensure quality of features used by millions. Join India's leading travel platform."
   },
   {
@@ -393,7 +393,7 @@ const jobData = [
     source: "LinkedIn",
     postedDaysAgo: 2,
     salaryRange: "₹22k–₹38k/month Internship",
-    applyUrl: "https://razorpay.com/careers/devops-intern",
+    applyUrl: "https://www.naukri.com/devops-intern-jobs",
     description: "Razorpay is offering DevOps internships to learn cloud infrastructure. Work with AWS, Docker, and Kubernetes. Set up CI/CD pipelines. Great opportunity to learn DevOps in fintech."
   },
   {
@@ -407,7 +407,7 @@ const jobData = [
     source: "LinkedIn",
     postedDaysAgo: 1,
     salaryRange: "10–18 LPA",
-    applyUrl: "https://unacademy.com/careers/fullstack-dev",
+    applyUrl: "https://www.naukri.com/full-stack-developer-jobs",
     description: "Unacademy is hiring Full Stack Developers to build education platform. Work on features for online learning. Use React, Node.js, and GraphQL. Join India's leading edtech company."
   },
   {
@@ -421,7 +421,7 @@ const jobData = [
     source: "Naukri",
     postedDaysAgo: 5,
     salaryRange: "6–10 LPA",
-    applyUrl: "https://byjus.com/careers/backend-dev",
+    applyUrl: "https://www.naukri.com/backend-developer-jobs",
     description: "Byju's is looking for Backend Developers to work on learning platform. Build APIs for educational content delivery. Work with microservices architecture. Join India's leading edtech company."
   },
   {
@@ -435,7 +435,7 @@ const jobData = [
     source: "LinkedIn",
     postedDaysAgo: 3,
     salaryRange: "₹28k–₹45k/month Internship",
-    applyUrl: "https://cred.club/careers/frontend-intern",
+    applyUrl: "https://www.naukri.com/frontend-intern-jobs",
     description: "CRED is offering Frontend Development internships. Build user interfaces for credit card rewards platform. Work with React and TypeScript. Learn frontend development in fintech."
   },
   {
@@ -449,7 +449,7 @@ const jobData = [
     source: "LinkedIn",
     postedDaysAgo: 0,
     salaryRange: "₹40k–₹60k/month Internship",
-    applyUrl: "https://google.com/careers/sde-intern",
+    applyUrl: "https://www.naukri.com/sde-intern-jobs",
     description: "Google is offering SDE internships to work on Google products. Build features used by billions of users. Work with world-class engineers. Learn software engineering at Google."
   },
   {
@@ -463,7 +463,7 @@ const jobData = [
     source: "LinkedIn",
     postedDaysAgo: 2,
     salaryRange: "12–20 LPA",
-    applyUrl: "https://sharechat.com/careers/python-dev",
+    applyUrl: "https://www.naukri.com/python-developer-jobs",
     description: "ShareChat is hiring Python Developers to build social media platform. Work on features for millions of users. Use Django and PostgreSQL. Join India's leading social media platform."
   },
   {
@@ -477,7 +477,7 @@ const jobData = [
     source: "Naukri",
     postedDaysAgo: 4,
     salaryRange: "6–10 LPA",
-    applyUrl: "https://meesho.com/careers/react-dev",
+    applyUrl: "https://www.naukri.com/react-developer-jobs",
     description: "Meesho is looking for React Developers to build social commerce platform. Create user interfaces for e-commerce. Work with React and Redux. Join India's leading social commerce platform."
   },
   {
@@ -491,7 +491,7 @@ const jobData = [
     source: "LinkedIn",
     postedDaysAgo: 1,
     salaryRange: "15–25 LPA",
-    applyUrl: "https://dream11.com/careers/backend-dev",
+    applyUrl: "https://www.naukri.com/backend-developer-jobs",
     description: "Dream11 is hiring Backend Developers to work on fantasy sports platform. Build APIs handling millions of users. Work with microservices and real-time systems. Join India's leading fantasy sports platform."
   },
   {
@@ -505,7 +505,7 @@ const jobData = [
     source: "LinkedIn",
     postedDaysAgo: 3,
     salaryRange: "7–12 LPA",
-    applyUrl: "https://rapido.bike/careers/fullstack-dev",
+    applyUrl: "https://www.naukri.com/full-stack-developer-jobs",
     description: "Rapido is looking for Full Stack Developers to build bike taxi platform. Work on both frontend and backend systems. Use React and Node.js. Join India's leading bike taxi platform."
   },
   {
@@ -519,7 +519,7 @@ const jobData = [
     source: "Naukri",
     postedDaysAgo: 5,
     salaryRange: "10–16 LPA",
-    applyUrl: "https://inmobi.com/careers/mobile-dev",
+    applyUrl: "https://www.naukri.com/mobile-developer-jobs",
     description: "InMobi is hiring Mobile Developers to build advertising SDKs. Work on Android apps used by millions. Use Kotlin and Java. Join India's leading mobile advertising platform."
   },
   {
@@ -533,7 +533,7 @@ const jobData = [
     source: "LinkedIn",
     postedDaysAgo: 2,
     salaryRange: "12–20 LPA",
-    applyUrl: "https://flipkartcareers.com/data-scientist",
+    applyUrl: "https://www.naukri.com/data-scientist-jobs",
     description: "Flipkart is looking for Data Scientists to work on recommendation systems. Build ML models for e-commerce. Analyze customer behavior data. Join India's leading e-commerce platform."
   },
   {
@@ -547,7 +547,7 @@ const jobData = [
     source: "LinkedIn",
     postedDaysAgo: 1,
     salaryRange: "12–18 LPA",
-    applyUrl: "https://phonepe.com/careers/devops-engineer",
+    applyUrl: "https://www.naukri.com/devops-engineer-jobs",
     description: "PhonePe is hiring DevOps Engineers to manage payment infrastructure. Work with AWS and Kubernetes. Set up CI/CD pipelines. Join India's leading payment platform."
   },
   {
@@ -561,7 +561,7 @@ const jobData = [
     source: "Naukri",
     postedDaysAgo: 6,
     salaryRange: "6–10 LPA",
-    applyUrl: "https://zomato.com/careers/frontend-dev",
+    applyUrl: "https://www.naukri.com/frontend-developer-jobs",
     description: "Zomato is looking for Frontend Developers to build food delivery interfaces. Create user experiences for ordering food. Work with React and Redux. Join India's leading food delivery platform."
   },
   {
@@ -575,7 +575,7 @@ const jobData = [
     source: "LinkedIn",
     postedDaysAgo: 4,
     salaryRange: "₹24k–₹38k/month Internship",
-    applyUrl: "https://careers.swiggy.com/internships/backend",
+    applyUrl: "https://www.naukri.com/backend-intern-jobs",
     description: "Swiggy is offering Backend Development internships. Build APIs for food delivery platform. Learn Django and PostgreSQL. Great opportunity to learn backend development in food tech."
   },
   {
@@ -589,7 +589,7 @@ const jobData = [
     source: "LinkedIn",
     postedDaysAgo: 0,
     salaryRange: "15–25 LPA",
-    applyUrl: "https://razorpay.com/careers/fullstack-dev",
+    applyUrl: "https://www.naukri.com/full-stack-developer-jobs",
     description: "Razorpay is hiring Full Stack Developers to build payment products. Work on both frontend and backend systems. Use React, Node.js, and TypeScript. Join India's leading payment gateway."
   },
   {
@@ -603,7 +603,7 @@ const jobData = [
     source: "LinkedIn",
     postedDaysAgo: 2,
     salaryRange: "₹30k–₹50k/month Internship",
-    applyUrl: "https://amazon.jobs/en/jobs/234567",
+    applyUrl: "https://www.naukri.com/sde-intern-jobs",
     description: "Join Amazon's internship program in Hyderabad. Work on real-world projects with experienced engineers. Gain hands-on experience with AWS services. Perfect opportunity for students."
   },
   {
@@ -617,7 +617,7 @@ const jobData = [
     source: "Naukri",
     postedDaysAgo: 7,
     salaryRange: "8–14 LPA",
-    applyUrl: "https://careers.infosys.com/job/java-developer-2",
+    applyUrl: "https://www.naukri.com/java-developer-jobs",
     description: "Infosys is hiring Java Developers with 1-3 years of experience. Work on enterprise applications for global clients. Use Spring Boot and microservices. Join a leading IT services company."
   },
   {
@@ -631,7 +631,7 @@ const jobData = [
     source: "Naukri",
     postedDaysAgo: 8,
     salaryRange: "5–8 LPA",
-    applyUrl: "https://careers.tcs.com/job/react-developer",
+    applyUrl: "https://www.naukri.com/react-developer-jobs",
     description: "TCS is looking for React Developers to build web applications. Work on client projects using React. Learn enterprise software development. Join a stable IT services company."
   },
   {
@@ -645,7 +645,7 @@ const jobData = [
     source: "Naukri",
     postedDaysAgo: 9,
     salaryRange: "7–12 LPA",
-    applyUrl: "https://careers.wipro.com/python-developer",
+    applyUrl: "https://www.naukri.com/python-developer-jobs",
     description: "Wipro is hiring Python Developers to work on client projects. Build web applications using Django. Work with PostgreSQL and Docker. Join a global IT services company."
   },
   {
@@ -659,7 +659,7 @@ const jobData = [
     source: "Indeed",
     postedDaysAgo: 10,
     salaryRange: "5–9 LPA",
-    applyUrl: "https://accenture.com/careers/frontend-dev",
+    applyUrl: "https://www.naukri.com/frontend-developer-jobs",
     description: "Accenture is looking for Frontend Developers to build enterprise applications. Work with Angular and TypeScript. Create user interfaces for business software. Join a global consulting company."
   },
   {
@@ -673,7 +673,7 @@ const jobData = [
     source: "Naukri",
     postedDaysAgo: 4,
     salaryRange: "8–14 LPA",
-    applyUrl: "https://capgemini.com/careers/backend-dev",
+    applyUrl: "https://www.naukri.com/backend-developer-jobs",
     description: "Capgemini is hiring Backend Developers to work on client projects. Build APIs using Spring Boot. Work with Kafka for event-driven architecture. Join a global IT consulting company."
   },
   {
@@ -687,7 +687,7 @@ const jobData = [
     source: "Naukri",
     postedDaysAgo: 5,
     salaryRange: "6–10 LPA",
-    applyUrl: "https://cognizant.com/careers/fullstack-dev",
+    applyUrl: "https://www.naukri.com/full-stack-developer-jobs",
     description: "Cognizant is looking for Full Stack Developers to build web applications. Work on both frontend and backend systems. Use React and Node.js. Join a global IT services company."
   },
   {
@@ -701,7 +701,7 @@ const jobData = [
     source: "LinkedIn",
     postedDaysAgo: 3,
     salaryRange: "10–16 LPA",
-    applyUrl: "https://ibm.com/careers/mobile-dev",
+    applyUrl: "https://www.naukri.com/mobile-developer-jobs",
     description: "IBM is hiring Mobile Developers to build enterprise mobile apps. Work with React Native to create cross-platform apps. Build features for business users. Join a leading enterprise software company."
   },
   {
@@ -715,7 +715,7 @@ const jobData = [
     source: "Naukri",
     postedDaysAgo: 6,
     salaryRange: "5–8 LPA",
-    applyUrl: "https://oracle.com/careers/qa-engineer",
+    applyUrl: "https://www.naukri.com/qa-engineer-jobs",
     description: "Oracle is looking for QA Engineers to test database products. Write automated test cases using Selenium. Ensure quality of enterprise software. Join a leading enterprise software company."
   },
   {
@@ -729,7 +729,7 @@ const jobData = [
     source: "LinkedIn",
     postedDaysAgo: 2,
     salaryRange: "10–16 LPA",
-    applyUrl: "https://sap.com/careers/devops-engineer",
+    applyUrl: "https://www.naukri.com/devops-engineer-jobs",
     description: "SAP is hiring DevOps Engineers to manage cloud infrastructure. Work with AWS, Docker, and Kubernetes. Set up CI/CD pipelines for enterprise software. Join a global enterprise software company."
   },
   {
@@ -743,7 +743,7 @@ const jobData = [
     source: "LinkedIn",
     postedDaysAgo: 1,
     salaryRange: "12–18 LPA",
-    applyUrl: "https://dell.com/careers/data-engineer",
+    applyUrl: "https://www.naukri.com/data-engineer-jobs",
     description: "Dell is looking for Data Engineers to build data pipelines. Process large datasets for business intelligence. Work with Spark and Kafka. Join a leading technology company."
   },
   {
@@ -757,7 +757,7 @@ const jobData = [
     source: "LinkedIn",
     postedDaysAgo: 0,
     salaryRange: "8–12 LPA",
-    applyUrl: "https://microsoft.com/careers/frontend-dev",
+    applyUrl: "https://www.naukri.com/frontend-developer-jobs",
     description: "Microsoft is hiring Frontend Developers to build cloud interfaces. Work with React and TypeScript. Create user interfaces for Azure platform. Learn from world-class engineers."
   },
   {
@@ -771,7 +771,7 @@ const jobData = [
     source: "LinkedIn",
     postedDaysAgo: 2,
     salaryRange: "12–20 LPA",
-    applyUrl: "https://thoughtworks.com/careers/backend-dev",
+    applyUrl: "https://www.naukri.com/backend-developer-jobs",
     description: "ThoughtWorks is looking for Backend Developers to work on client projects. Build scalable APIs using Spring Boot. Work in agile teams. Great culture and learning opportunities."
   },
   {
@@ -785,7 +785,7 @@ const jobData = [
     source: "LinkedIn",
     postedDaysAgo: 3,
     salaryRange: "10–18 LPA",
-    applyUrl: "https://careers.zoho.com/fullstack-dev",
+    applyUrl: "https://www.naukri.com/full-stack-developer-jobs",
     description: "Zoho is hiring Full Stack Developers to build SaaS products. Work on both frontend and backend systems. Use React, Node.js, and TypeScript. Join a product-focused company."
   },
   {
@@ -799,7 +799,7 @@ const jobData = [
     source: "LinkedIn",
     postedDaysAgo: 4,
     salaryRange: "6–10 LPA",
-    applyUrl: "https://freshworks.com/careers/mobile-dev",
+    applyUrl: "https://www.naukri.com/mobile-developer-jobs",
     description: "Freshworks is looking for Mobile Developers to build SaaS mobile apps. Work with React Native to create cross-platform apps. Build features for business users. Join a product-focused company."
   },
   {
@@ -813,7 +813,7 @@ const jobData = [
     source: "LinkedIn",
     postedDaysAgo: 1,
     salaryRange: "8–14 LPA",
-    applyUrl: "https://juspay.in/careers/qa-engineer",
+    applyUrl: "https://www.naukri.com/qa-engineer-jobs",
     description: "Juspay is hiring QA Engineers to test payment SDKs. Write automated test cases using Selenium. Ensure quality of fintech products. Join a fintech company focused on payments."
   },
   {
@@ -827,7 +827,7 @@ const jobData = [
     source: "Naukri",
     postedDaysAgo: 5,
     salaryRange: "10–16 LPA",
-    applyUrl: "https://paytm.com/careers/devops-engineer",
+    applyUrl: "https://www.naukri.com/devops-engineer-jobs",
     description: "Paytm is looking for DevOps Engineers to manage payment infrastructure. Work with AWS and Kubernetes. Set up CI/CD pipelines. Join India's leading payment platform."
   },
   {
@@ -841,7 +841,7 @@ const jobData = [
     source: "LinkedIn",
     postedDaysAgo: 2,
     salaryRange: "12–20 LPA",
-    applyUrl: "https://myntra.com/careers/data-scientist",
+    applyUrl: "https://www.naukri.com/data-scientist-jobs",
     description: "Myntra is hiring Data Scientists to work on recommendation systems. Build ML models for fashion e-commerce. Analyze customer behavior data. Join India's leading fashion e-commerce platform."
   }
 ];

@@ -61,10 +61,13 @@ class Router {
         this.toggleSaveJob(jobId);
       }
       if (e.target.matches('.btn-apply')) {
+        e.preventDefault();
         const jobId = parseInt(e.target.dataset.jobId);
         const job = this.allJobs.find(j => j.id === jobId);
         if (job && job.applyUrl) {
           window.open(job.applyUrl, '_blank');
+        } else {
+          console.error('Job or applyUrl not found for jobId:', jobId);
         }
       }
       // Handle modal close
@@ -119,6 +122,26 @@ class Router {
       if (e.target.matches('.btn-copy-submission')) {
         this.copyFinalSubmission();
       }
+      // Handle add skill button
+      if (e.target.matches('#addSkillBtn')) {
+        this.addSkill();
+      }
+      // Handle remove skill button
+      if (e.target.matches('.remove-skill')) {
+        this.removeSkill(e.target.dataset.skill);
+      }
+      // Handle Apply button - auto-mark as Applied
+      if (e.target.matches('a.btn-primary[href^="https"]')) {
+        const jobCard = e.target.closest('.job-card, .digest-job-item, .modal-content');
+        if (jobCard) {
+          const jobId = jobCard.querySelector('[data-job-id]')?.dataset?.jobId;
+          if (jobId) {
+            setTimeout(() => {
+              this.updateJobStatus(parseInt(jobId), 'Applied');
+            }, 500);
+          }
+        }
+      }
     });
 
     // Handle slider input change
@@ -127,6 +150,16 @@ class Router {
         const valueDisplay = document.getElementById('minMatchScoreValue');
         if (valueDisplay) {
           valueDisplay.textContent = e.target.value;
+        }
+      }
+    });
+
+    // Auto-save preferences on change
+    document.addEventListener('change', (e) => {
+      if (e.target.matches('#roleKeywords, #preferredLocations, #modeRemote, #modeHybrid, #modeOnsite, #experienceLevel, #minMatchScore')) {
+        const hash = window.location.hash.slice(1) || '/';
+        if (hash === '/settings') {
+          this.autoSavePreferences();
         }
       }
     });
@@ -249,7 +282,7 @@ class Router {
           <h1 class="landing-headline">Stop Missing The Right Jobs.</h1>
           <p class="landing-subtext">Precision-matched job discovery delivered daily at 9AM.</p>
           <div class="landing-cta">
-            <a href="#/settings" class="btn btn-primary">Start Tracking</a>
+            <a href="#/settings" class="btn btn-primary" onclick="window.location.hash='#/settings'">Start Tracking</a>
           </div>
         </div>
       </div>
@@ -259,6 +292,9 @@ class Router {
   renderDashboardPage() {
     const hasPreferences = this.hasPreferences();
     const filteredJobs = this.getFilteredJobs();
+    
+    console.log('Dashboard - hasPreferences:', hasPreferences);
+    console.log('Dashboard - filteredJobs count:', filteredJobs.length);
     
     return `
       <div class="page-container">
@@ -470,6 +506,7 @@ class Router {
   renderSettingsPage() {
     const prefs = this.preferences || {};
     const locations = [...new Set(this.allJobs.map(j => j.location))].sort();
+    const allSkills = [...new Set(this.allJobs.flatMap(j => j.skills))].sort();
     
     return `
       <div class="page-container">
@@ -485,11 +522,12 @@ class Router {
           </div>
           
           <div class="form-group">
-            <label for="preferredLocations" class="form-label">Preferred Locations</label>
-            <select id="preferredLocations" class="input" multiple size="5">
-              ${locations.map(loc => `<option value="${loc}" ${(prefs.preferredLocations || []).includes(loc) ? 'selected' : ''}>${loc}</option>`).join('')}
+            <label for="preferredLocations" class="form-label">Preferred Location</label>
+            <select id="preferredLocations" class="input">
+              <option value="">Select location</option>
+              ${locations.map(loc => `<option value="${loc}" ${prefs.preferredLocations === loc ? 'selected' : ''}>${loc}</option>`).join('')}
             </select>
-            <p class="form-hint">Hold Ctrl/Cmd to select multiple locations.</p>
+            <p class="form-hint">Select your preferred work location.</p>
           </div>
           
           <div class="form-group">
@@ -525,8 +563,18 @@ class Router {
           
           <div class="form-group">
             <label for="skills" class="form-label">Skills</label>
-            <input type="text" id="skills" class="input" placeholder="e.g., React, Python, Java, Node.js" value="${prefs.skills || ''}">
-            <p class="form-hint">Enter comma-separated skills you possess.</p>
+            <div style="display: flex; gap: 8px; margin-bottom: 8px;">
+              <select id="skillsDropdown" class="input" style="flex: 1;">
+                <option value="">Select skill</option>
+                ${allSkills.map(skill => `<option value="${skill}">${skill}</option>`).join('')}
+              </select>
+              <button type="button" class="btn btn-secondary" id="addSkillBtn">Add</button>
+            </div>
+            <div id="selectedSkills" style="display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 8px;">
+              ${(Array.isArray(prefs.skills) ? prefs.skills : []).map(skill => `<span class="skill-tag" style="background: #e0e0e0; padding: 4px 8px; border-radius: 4px; display: flex; align-items: center; gap: 4px;">${skill}<button type="button" class="remove-skill" data-skill="${skill}" style="background: none; border: none; cursor: pointer; font-weight: bold;">&times;</button></span>`).join('')}
+            </div>
+            <input type="hidden" id="skills" value="${(Array.isArray(prefs.skills) ? prefs.skills : []).join(',')}">
+            <p class="form-hint">Select and add skills one by one.</p>
           </div>
           
           <div class="form-group">
@@ -537,6 +585,7 @@ class Router {
           
           <div class="form-actions">
             <button type="button" class="btn btn-primary btn-save-preferences">Save Preferences</button>
+            <span id="autoSaveIndicator" style="color: #666; font-size: 14px; margin-left: 16px;"></span>
           </div>
         </div>
       </div>
@@ -961,7 +1010,7 @@ class Router {
           <button class="btn btn-secondary btn-save ${isSaved ? 'saved' : ''}" data-job-id="${job.id}">
             ${isSaved ? 'Saved' : 'Save'}
           </button>
-          <button class="btn btn-primary btn-apply" data-job-id="${job.id}">Apply</button>
+          <a href="${job.applyUrl}" target="_blank" class="btn btn-primary">Apply</a>
         </div>
         <div class="job-status-group">
           <button class="btn-status ${jobStatus === 'Not Applied' ? 'active' : ''}" data-job-id="${job.id}" data-status="Not Applied">Not Applied</button>
@@ -1080,6 +1129,7 @@ class Router {
     if (!modal || !modalBody) return;
 
     const matchScore = this.calculateMatchScore(job);
+    const matchBreakdown = this.getMatchBreakdown(job);
     const matchScoreBadge = this.hasPreferences() ? this.renderMatchScoreBadge(matchScore) : '';
 
     modalBody.innerHTML = `
@@ -1090,6 +1140,12 @@ class Router {
         </div>
         <div class="modal-job-company">${job.company}</div>
       </div>
+      ${matchBreakdown ? `<div class="match-breakdown" style="background: #f5f5f5; padding: 12px; border-radius: 4px; margin: 16px 0;">
+        <h4 style="margin: 0 0 8px 0; font-size: 14px;">Match Breakdown:</h4>
+        <ul style="margin: 0; padding-left: 20px; font-size: 13px;">
+          ${matchBreakdown.map(item => `<li>${item}</li>`).join('')}
+        </ul>
+      </div>` : ''}
       <div class="modal-job-meta">
         <div class="modal-meta-item">
           <strong>Location:</strong> ${job.location}
@@ -1124,7 +1180,7 @@ class Router {
         <button class="btn btn-secondary btn-save ${this.getSavedJobs().includes(job.id) ? 'saved' : ''}" data-job-id="${job.id}">
           ${this.getSavedJobs().includes(job.id) ? 'Saved' : 'Save'}
         </button>
-        <a href="${job.applyUrl}" target="_blank" class="btn btn-primary">Apply Now</a>
+        <a href="${job.applyUrl}" target="_blank" class="btn btn-primary" data-job-id="${job.id}">Apply Now</a>
       </div>
     `;
 
@@ -1209,10 +1265,8 @@ class Router {
     }
 
     // +15 if job.location matches preferredLocations
-    if (prefs.preferredLocations && prefs.preferredLocations.length > 0) {
-      if (prefs.preferredLocations.includes(job.location)) {
-        score += 15;
-      }
+    if (prefs.preferredLocations && prefs.preferredLocations === job.location) {
+      score += 15;
     }
 
     // +10 if job.mode matches preferredMode
@@ -1229,9 +1283,9 @@ class Router {
 
     // +15 if overlap between job.skills and user.skills (any match)
     if (prefs.skills && job.skills && job.skills.length > 0) {
-      const userSkills = prefs.skills.split(',').map(s => s.trim().toLowerCase());
+      const userSkills = Array.isArray(prefs.skills) ? prefs.skills.map(s => s.toLowerCase()) : [prefs.skills.toLowerCase()];
       const jobSkills = job.skills.map(s => s.toLowerCase());
-      if (userSkills.some(skill => jobSkills.some(js => js.includes(skill) || skill.includes(js)))) {
+      if (userSkills.some(skill => jobSkills.includes(skill))) {
         score += 15;
       }
     }
@@ -1285,14 +1339,13 @@ class Router {
 
   savePreferences() {
     const roleKeywords = document.getElementById('roleKeywords')?.value || '';
-    const preferredLocations = Array.from(document.getElementById('preferredLocations')?.selectedOptions || [])
-      .map(opt => opt.value);
+    const preferredLocations = document.getElementById('preferredLocations')?.value || '';
     const preferredMode = [];
     if (document.getElementById('modeRemote')?.checked) preferredMode.push('Remote');
     if (document.getElementById('modeHybrid')?.checked) preferredMode.push('Hybrid');
     if (document.getElementById('modeOnsite')?.checked) preferredMode.push('Onsite');
     const experienceLevel = document.getElementById('experienceLevel')?.value || '';
-    const skills = document.getElementById('skills')?.value || '';
+    const skills = document.getElementById('skills')?.value.split(',').filter(s => s) || [];
     const minMatchScore = parseInt(document.getElementById('minMatchScore')?.value || '40');
 
     const preferences = {
@@ -1730,6 +1783,130 @@ Core Features:
     const mailtoLink = `mailto:?subject=${subject}&body=${bodyEncoded}`;
 
     window.location.href = mailtoLink;
+  }
+
+  addSkill() {
+    const dropdown = document.getElementById('skillsDropdown');
+    const skill = dropdown?.value;
+    if (!skill) return;
+    
+    const hiddenInput = document.getElementById('skills');
+    const currentSkills = hiddenInput.value.split(',').filter(s => s);
+    
+    if (currentSkills.includes(skill)) {
+      alert('Skill already added');
+      return;
+    }
+    
+    currentSkills.push(skill);
+    hiddenInput.value = currentSkills.join(',');
+    
+    const container = document.getElementById('selectedSkills');
+    const tag = document.createElement('span');
+    tag.className = 'skill-tag';
+    tag.style.cssText = 'background: #e0e0e0; padding: 4px 8px; border-radius: 4px; display: flex; align-items: center; gap: 4px;';
+    tag.innerHTML = `${skill}<button type="button" class="remove-skill" data-skill="${skill}" style="background: none; border: none; cursor: pointer; font-weight: bold;">&times;</button>`;
+    container.appendChild(tag);
+    
+    dropdown.value = '';
+  }
+
+  removeSkill(skill) {
+    const hiddenInput = document.getElementById('skills');
+    const currentSkills = hiddenInput.value.split(',').filter(s => s && s !== skill);
+    hiddenInput.value = currentSkills.join(',');
+    
+    const container = document.getElementById('selectedSkills');
+    const tags = container.querySelectorAll('.skill-tag');
+    tags.forEach(tag => {
+      if (tag.textContent.includes(skill)) {
+        tag.remove();
+      }
+    });
+  }
+
+  autoSavePreferences() {
+    const roleKeywords = document.getElementById('roleKeywords')?.value || '';
+    const preferredLocations = document.getElementById('preferredLocations')?.value || '';
+    const preferredMode = [];
+    if (document.getElementById('modeRemote')?.checked) preferredMode.push('Remote');
+    if (document.getElementById('modeHybrid')?.checked) preferredMode.push('Hybrid');
+    if (document.getElementById('modeOnsite')?.checked) preferredMode.push('Onsite');
+    const experienceLevel = document.getElementById('experienceLevel')?.value || '';
+    const skills = document.getElementById('skills')?.value.split(',').filter(s => s) || [];
+    const minMatchScore = parseInt(document.getElementById('minMatchScore')?.value || '40');
+
+    const preferences = {
+      roleKeywords,
+      preferredLocations,
+      preferredMode,
+      experienceLevel,
+      skills,
+      minMatchScore
+    };
+
+    localStorage.setItem('jobTrackerPreferences', JSON.stringify(preferences));
+    this.preferences = preferences;
+
+    const indicator = document.getElementById('autoSaveIndicator');
+    if (indicator) {
+      indicator.textContent = '✓ Auto-saved';
+      indicator.style.color = '#4caf50';
+      setTimeout(() => {
+        indicator.textContent = '';
+      }, 2000);
+    }
+  }
+
+  getMatchBreakdown(job) {
+    if (!this.hasPreferences()) return null;
+
+    const prefs = this.preferences;
+    const breakdown = [];
+
+    if (prefs.roleKeywords) {
+      const keywords = prefs.roleKeywords.split(',').map(k => k.trim().toLowerCase());
+      const titleLower = job.title.toLowerCase();
+      if (keywords.some(keyword => titleLower.includes(keyword))) {
+        breakdown.push('✓ Role keyword in title (+25 points)');
+      } else {
+        const descLower = job.description.toLowerCase();
+        if (keywords.some(keyword => descLower.includes(keyword))) {
+          breakdown.push('✓ Role keyword in description (+15 points)');
+        }
+      }
+    }
+
+    if (prefs.preferredLocations && prefs.preferredLocations === job.location) {
+      breakdown.push('✓ Preferred location match (+15 points)');
+    }
+
+    if (prefs.preferredMode && prefs.preferredMode.length > 0 && prefs.preferredMode.includes(job.mode)) {
+      breakdown.push('✓ Work mode preference match (+10 points)');
+    }
+
+    if (prefs.experienceLevel && job.experience === prefs.experienceLevel) {
+      breakdown.push('✓ Experience level match (+10 points)');
+    }
+
+    if (prefs.skills && job.skills && job.skills.length > 0) {
+      const userSkills = Array.isArray(prefs.skills) ? prefs.skills.map(s => s.toLowerCase()) : [prefs.skills.toLowerCase()];
+      const jobSkills = job.skills.map(s => s.toLowerCase());
+      const matchedSkills = userSkills.filter(skill => jobSkills.includes(skill));
+      if (matchedSkills.length > 0) {
+        breakdown.push(`✓ Skills match: ${matchedSkills.join(', ')} (+15 points)`);
+      }
+    }
+
+    if (job.postedDaysAgo <= 2) {
+      breakdown.push('✓ Recently posted (+5 points)');
+    }
+
+    if (job.source === 'LinkedIn') {
+      breakdown.push('✓ LinkedIn source (+5 points)');
+    }
+
+    return breakdown.length > 0 ? breakdown : null;
   }
 }
 
