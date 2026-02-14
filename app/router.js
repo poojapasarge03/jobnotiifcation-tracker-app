@@ -593,14 +593,7 @@ class Router {
   }
 
   renderProofPage() {
-    return `
-      <div class="page-container">
-        <div class="page-header">
-          <h1 class="page-title">Proof</h1>
-          <p class="page-subtext">Placeholder for artifact collection.</p>
-        </div>
-      </div>
-    `;
+    return this.renderProofFinalPage();
   }
 
   renderTestPage() {
@@ -810,88 +803,100 @@ class Router {
     const testResults = this.getTestResults();
     const passedCount = Object.values(testResults).filter(Boolean).length;
     
-    // Calculate step completion
     const steps = [
-      { id: 'preferences', name: 'Preferences System', completed: this.hasPreferences() },
-      { id: 'match-scoring', name: 'Match Score Engine', completed: this.hasPreferences() && passedCount > 0 },
-      { id: 'filters', name: 'Filter System', completed: true },
-      { id: 'saved-jobs', name: 'Save Jobs Feature', completed: true },
-      { id: 'status-tracking', name: 'Status Tracking', completed: true },
-      { id: 'digest', name: 'Daily Digest', completed: true },
-      { id: 'test-checklist', name: 'Test Checklist', completed: passedCount === 10 },
-      { id: 'artifacts', name: 'Artifact Collection', completed: artifacts.lovableLink && artifacts.githubLink && artifacts.deployedLink }
+      { id: 'design-system', name: 'Design System', description: 'Premium design tokens and components', completed: true },
+      { id: 'dashboard', name: 'Job Dashboard', description: 'Job listing with filters and search', completed: this.allJobs.length > 0 },
+      { id: 'preferences', name: 'Preferences', description: 'User preference configuration', completed: this.hasPreferences() },
+      { id: 'saved-jobs', name: 'Saved Jobs', description: 'Save and manage favorite jobs', completed: this.getSavedJobs().length > 0 },
+      { id: 'digest', name: 'Daily Digest', description: 'Top 10 matched jobs daily', completed: this.hasGeneratedDigest() },
+      { id: 'status-tracking', name: 'Status Tracking', description: 'Track application status', completed: this.getStatusUpdates().length > 0 },
+      { id: 'test-suite', name: 'Test Suite', description: '10 validation checks', completed: passedCount === 10 },
+      { id: 'submission', name: 'Submission', description: 'Artifact collection complete', completed: artifacts.lovableLink && artifacts.githubLink && artifacts.deployedLink }
     ];
 
     const completedSteps = steps.filter(s => s.completed).length;
+    const allTestsPassed = passedCount === 10;
+    const allArtifactsProvided = artifacts.lovableLink && artifacts.githubLink && artifacts.deployedLink;
+    const canShip = allTestsPassed && allArtifactsProvided;
+
+    const testChecklist = [
+      { id: 'preferences-persist', name: 'Preferences persist after refresh' },
+      { id: 'match-score-calculates', name: 'Match score calculates correctly' },
+      { id: 'show-matches-toggle', name: '"Show only matches" toggle works' },
+      { id: 'save-persists', name: 'Save job persists after refresh' },
+      { id: 'apply-opens-tab', name: 'Apply opens in new tab' },
+      { id: 'status-persists', name: 'Status update persists after refresh' },
+      { id: 'status-filter-works', name: 'Status filter works correctly' },
+      { id: 'digest-generates-top10', name: 'Digest generates top 10 by score' },
+      { id: 'digest-persists-day', name: 'Digest persists for the day' },
+      { id: 'no-console-errors', name: 'No console errors on main pages' }
+    ];
 
     return `
       <div class="page-container">
         <div class="page-header">
           <h1 class="page-title">Project 1 — Job Notification Tracker</h1>
-          <div class="project-status-badge badge-status-${projectStatus.toLowerCase().replace(' ', '-')}">
-            ${projectStatus}
-          </div>
+          <div class="project-status-badge badge-status-${projectStatus.toLowerCase().replace(' ', '-')}" style="display: inline-block; padding: 8px 16px; border-radius: 20px; font-weight: 600; margin-top: 8px;">${projectStatus}</div>
         </div>
 
-        <div class="proof-section">
-          <h2 class="proof-section-title">Step Completion Summary</h2>
-          <div class="steps-summary">
-            <div class="steps-progress">${completedSteps} / ${steps.length} steps completed</div>
-            <div class="steps-list">
-              ${steps.map(step => `
-                <div class="step-item ${step.completed ? 'completed' : 'pending'}">
-                  <span class="step-checkbox">${step.completed ? '✓' : '□'}</span>
-                  <span class="step-name">${step.name}</span>
-                  <span class="step-status">${step.completed ? 'Completed' : 'Pending'}</span>
+        <div class="proof-section" style="margin-bottom: 32px;">
+          <h2 style="font-size: 20px; margin-bottom: 16px;">Step Completion Summary</h2>
+          <div style="background: #f5f5f5; padding: 16px; border-radius: 8px; margin-bottom: 16px;">
+            <div style="font-size: 18px; font-weight: 600;">${completedSteps} / ${steps.length} Steps Completed</div>
+          </div>
+          <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 16px;">
+            ${steps.map((step, index) => `
+              <div style="background: white; border: 1px solid #e0e0e0; border-radius: 8px; padding: 16px; box-shadow: 0 2px 4px rgba(0,0,0,0.05);">
+                <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 8px;">
+                  <div style="width: 32px; height: 32px; border-radius: 50%; background: ${step.completed ? '#4caf50' : '#e0e0e0'}; color: white; display: flex; align-items: center; justify-content: center; font-weight: 600;">${index + 1}</div>
+                  <div style="flex: 1;"><div style="font-weight: 600; font-size: 15px;">${step.name}</div></div>
                 </div>
-              `).join('')}
+                <div style="font-size: 13px; color: #666; margin-bottom: 12px;">${step.description}</div>
+                <div style="display: inline-block; padding: 4px 12px; border-radius: 12px; font-size: 12px; font-weight: 600; background: ${step.completed ? '#e8f5e9' : '#ffebee'}; color: ${step.completed ? '#2e7d32' : '#c62828'};">${step.completed ? '✅ Completed' : '❌ Pending'}</div>
+              </div>
+            `).join('')}
+          </div>
+        </div>
+
+        <div class="proof-section" style="margin-bottom: 32px;">
+          <h2 style="font-size: 20px; margin-bottom: 16px;">Test Checklist System</h2>
+          <div style="background: ${allTestsPassed ? '#e8f5e9' : '#fff3e0'}; padding: 16px; border-radius: 8px; margin-bottom: 16px; border: 2px solid ${allTestsPassed ? '#4caf50' : '#ff9800'};">
+            <div style="font-size: 18px; font-weight: 600; color: ${allTestsPassed ? '#2e7d32' : '#e65100'};">${allTestsPassed ? '✅' : '❌'} ${passedCount} / 10 Tests Completed</div>
+            ${!allTestsPassed ? '<div style="font-size: 14px; color: #e65100; margin-top: 8px;">Complete all tests to unlock submission</div>' : ''}
+          </div>
+          <div style="background: white; border: 1px solid #e0e0e0; border-radius: 8px; padding: 16px;">
+            ${testChecklist.map(test => {
+              const isPassed = testResults[test.id] || false;
+              return `<div style="display: flex; align-items: center; padding: 12px; border-bottom: 1px solid #f0f0f0;"><input type="checkbox" class="test-checkbox" data-test-id="${test.id}" ${isPassed ? 'checked' : ''} style="width: 20px; height: 20px; margin-right: 12px; cursor: pointer;"><span style="flex: 1; font-size: 14px;">${test.name}</span><span style="font-size: 20px;">${isPassed ? '✅' : '❌'}</span></div>`;
+            }).join('')}
+          </div>
+          <div style="margin-top: 16px;"><button class="btn btn-secondary btn-reset-tests">Reset All Tests</button></div>
+        </div>
+
+        <div class="proof-section" style="margin-bottom: 32px;">
+          <h2 style="font-size: 20px; margin-bottom: 16px;">Artifact Collection</h2>
+          <div style="background: white; border: 1px solid #e0e0e0; border-radius: 8px; padding: 24px;">
+            <div style="margin-bottom: 20px;">
+              <label style="display: block; font-weight: 600; margin-bottom: 8px;">Lovable Project Link *</label>
+              <input type="url" id="lovableLink" class="input artifact-input" placeholder="https://lovable.dev/project/..." value="${artifacts.lovableLink || ''}" style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 4px;">
+              <p style="font-size: 12px; color: #666; margin-top: 4px;">Must be a valid HTTPS URL</p>
+            </div>
+            <div style="margin-bottom: 20px;">
+              <label style="display: block; font-weight: 600; margin-bottom: 8px;">GitHub Repository Link *</label>
+              <input type="url" id="githubLink" class="input artifact-input" placeholder="https://github.com/username/repo" value="${artifacts.githubLink || ''}" style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 4px;">
+              <p style="font-size: 12px; color: #666; margin-top: 4px;">Must be a valid HTTPS URL</p>
+            </div>
+            <div style="margin-bottom: 20px;">
+              <label style="display: block; font-weight: 600; margin-bottom: 8px;">Deployed URL (Vercel or equivalent) *</label>
+              <input type="url" id="deployedLink" class="input artifact-input" placeholder="https://your-app.vercel.app" value="${artifacts.deployedLink || ''}" style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 4px;">
+              <p style="font-size: 12px; color: #666; margin-top: 4px;">Must be a valid HTTPS URL</p>
             </div>
           </div>
         </div>
 
         <div class="proof-section">
-          <h2 class="proof-section-title">Artifact Collection</h2>
-          <div class="artifacts-form">
-            <div class="form-group">
-              <label for="lovableLink" class="form-label">Lovable Project Link *</label>
-              <input 
-                type="url" 
-                id="lovableLink" 
-                class="input artifact-input" 
-                placeholder="https://lovable.dev/project/..."
-                value="${artifacts.lovableLink || ''}"
-              >
-              <p class="form-hint">Enter your Lovable project URL</p>
-            </div>
-
-            <div class="form-group">
-              <label for="githubLink" class="form-label">GitHub Repository Link *</label>
-              <input 
-                type="url" 
-                id="githubLink" 
-                class="input artifact-input" 
-                placeholder="https://github.com/username/repo"
-                value="${artifacts.githubLink || ''}"
-              >
-              <p class="form-hint">Enter your GitHub repository URL</p>
-            </div>
-
-            <div class="form-group">
-              <label for="deployedLink" class="form-label">Deployed URL (Vercel or equivalent) *</label>
-              <input 
-                type="url" 
-                id="deployedLink" 
-                class="input artifact-input" 
-                placeholder="https://your-app.vercel.app"
-                value="${artifacts.deployedLink || ''}"
-              >
-              <p class="form-hint">Enter your deployed application URL</p>
-            </div>
-
-            <div class="form-actions">
-              <button class="btn btn-primary btn-copy-submission">Copy Final Submission</button>
-            </div>
-          </div>
+          <h2 style="font-size: 20px; margin-bottom: 16px;">Ship Status</h2>
+          ${!canShip ? `<div style="background: #ffebee; border: 2px solid #c62828; border-radius: 8px; padding: 24px; text-align: center;"><div style="font-size: 48px; margin-bottom: 16px;">🔒</div><h3 style="font-size: 20px; font-weight: 600; color: #c62828; margin-bottom: 12px;">Ship Locked</h3><p style="font-size: 14px; color: #666; margin-bottom: 16px;">Complete all tests and provide all 3 links to unlock submission.</p><div style="text-align: left; max-width: 400px; margin: 0 auto;"><div style="font-weight: 600; margin-bottom: 8px;">Missing Requirements:</div><ul style="list-style: none; padding: 0;">${!allTestsPassed ? `<li style="padding: 4px 0;">❌ Complete all 10 tests (${passedCount}/10)</li>` : '<li style="padding: 4px 0;">✅ All tests passed</li>'}${!artifacts.lovableLink ? '<li style="padding: 4px 0;">❌ Lovable Project Link</li>' : '<li style="padding: 4px 0;">✅ Lovable link provided</li>'}${!artifacts.githubLink ? '<li style="padding: 4px 0;">❌ GitHub Repository Link</li>' : '<li style="padding: 4px 0;">✅ GitHub link provided</li>'}${!artifacts.deployedLink ? '<li style="padding: 4px 0;">❌ Deployed URL</li>' : '<li style="padding: 4px 0;">✅ Deployed URL provided</li>'}</ul></div></div>` : `<div style="background: #e8f5e9; border: 2px solid #4caf50; border-radius: 8px; padding: 24px; text-align: center;"><div style="font-size: 48px; margin-bottom: 16px;">🚀</div><h3 style="font-size: 20px; font-weight: 600; color: #2e7d32; margin-bottom: 12px;">Ready to Ship!</h3><p style="font-size: 14px; color: #666; margin-bottom: 16px;">All requirements completed. Copy your final submission below.</p><button class="btn btn-primary btn-copy-submission" style="padding: 12px 32px; font-size: 16px;">Copy Final Submission</button></div>`}
         </div>
       </div>
     `;
@@ -1783,6 +1788,11 @@ Core Features:
     const mailtoLink = `mailto:?subject=${subject}&body=${bodyEncoded}`;
 
     window.location.href = mailtoLink;
+  }
+
+  hasGeneratedDigest() {
+    const today = new Date().toISOString().split('T')[0];
+    return this.getDigest(today) !== null;
   }
 
   addSkill() {
