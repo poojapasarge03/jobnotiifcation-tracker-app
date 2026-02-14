@@ -1,0 +1,28 @@
+{
+  "name": "kodnest",
+  "version": "1.0.0",
+  "description": "A premium SaaS design system built with calm, intentional, and coherent principles. This is not a student project—it's designed to feel like a serious B2C product company.",
+  "main": "index.js",
+  "directories": {
+    "example": "examples"
+  },
+  "scripts": {
+    "dev": "http-server ./ -o /app -c-1 -p 8084",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/poojapasarge03/jobnotiifcation-tracker-app.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/poojapasarge03/jobnotiifcation-tracker-app/issues"
+  },
+  "homepage": "https://github.com/poojapasarge03/jobnotiifcation-tracker-app#readme",
+  "devDependencies": {
+    "http-server": "^14.1.1"
+  }
+}
